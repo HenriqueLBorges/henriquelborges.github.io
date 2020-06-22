@@ -1,19 +1,19 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: henrique-borges.dev
+description: My personal blog about software engineering
+meta_description: "Blog about software engineering"
 
 markdown: kramdown
 highlighter: rouge
 logo: false
 paginate: 15
 baseurl: /kasper
-domain_name: "http://yourblog-domain.com"
+domain_name: "http://henrique-borges.dev"
 google_analytics: "UA-XXXXXXXX-X"
 plugins: [jekyll-paginate]
 
 # Details for the RSS feed generator
 url: ""
-author: "Your Name"
+author: "Henrique Borges"
 
 # Disqus config
 disqus-shortname: ""
