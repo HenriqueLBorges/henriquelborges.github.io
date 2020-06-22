@@ -6,7 +6,7 @@ markdown: kramdown
 highlighter: rouge
 logo: false
 paginate: 15
-baseurl: /
+baseurl: /henriquelborges.github.io
 domain_name: "http://henrique-borges.dev"
 google_analytics: "UA-XXXXXXXX-X"
 plugins: [jekyll-paginate]
