@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Wi-Fi Fingerprints - A machine Learning approach"
+title:  "Indoor Navigation - An approach with Wi-Fi Fingerprints"
 date:   2020-06-23 19:09:00
-categories: Projects Wi-Fi-Fingerprints MachineLearning
+categories: Projects Wi-Fi-Fingerprints MachineLearning IndoorNavigation
 ---
 
-At the end of 2019, I finally finished my graduation thesis on computer engineering. The main objective was to create something that encapsulates <u>math, software, and hardware</u>. During my course, my college professors always encouraged the students to develop some kind of critical view, about <u>how a computer engineer could improve the world around it</u>. I always wanted to build something that could be used to help someone, even in a minimal way.
+At the end of 2018, I finally finished my graduation thesis on computer engineering. The main objective was to create something that encapsulates <u>math, software, and hardware</u>. During my course, my college professors always encouraged the students to develop some kind of critical view, about <u>how a computer engineer could improve the world around it</u>. I always wanted to build something that could be used to help someone, even in a minimal way.
 
 The idea for my graduation thesis began when I noticed something, although my college had proper braille signs identifying each classroom and bump dots everywhere, blind people still need a companion to reach their destinations. <u>My idea was to create a way to allow blind people to reach their destinations by themselves<u>.
 
@@ -15,8 +15,14 @@ The idea for my graduation thesis began when I noticed something, although my co
 
 When we think about this kind of navigation assistance we often think about GPS (Global Positioning System), but it turns out that <u>GPS is not good for indoor navigation</u>, satellites just can't offer this precision because the structure of the building often blocks the signal.
 
-<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/wireless.gif' | relative_url}}" alt="wireless.gif" style="float:left;">
-<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/electromagneticwave.gif' | relative_url}}" alt="electromagneticwave.gif">
+<div style="content: '';clear: both;display: table;">
+  <div style="float:left; width: 50%;">
+    <img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/wireless.gif' | relative_url}}" alt="wireless.gif" style="width:100%">
+  </div>
+  <div style="float:left; width: 50%;">
+    <img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/electromagneticwave.gif' | relative_url}}" alt="electromagneticwave.gif" style="width:100%">
+  </div>
+</div>
 
 So I needed another way to track someone inside the college, and the wireless technology came to the rescue. My college building was filled up with routers at every corner. Here begins the fun part, there is a technique of indoor navigation called Wi-Fi Fingerprint, and the concept behind it's very interesting. It's important to keep in mind that a wireless signal is just electromagnetic radiation.
 
@@ -82,7 +88,7 @@ The image above shows the final result, and how much Wi-Fi Fingerprints I initia
 
 <h3>The machine learning model</h3>
 
-Three key concepts are needed to be understood here.
+Three key concepts are needed to be understood here. I will not enter into details about what models I did use or how to use them, but there are great books that could teach you. Doing this would take another extensive post.
 
 <ul>
   <li>Classification</li>
@@ -154,7 +160,7 @@ I had never used Machine Learning for anything before and had a pretty short sch
 
 <h3>Final considerations</h3>
 
-This was by far the most ambitious project I ever did by myself. The amount of search I did in areas that I had never seen before was huge. But looking back was worthy because it was the first time I experienced some problems like the need for a data pipeline. I was working with 3 Raspberry boards saving data collected as JSON. I needed to merge all this data and convert it into a tabular format to train my machine learning models. Only the site-survey process took a very long time, but <u>I was able to collect 258.369 Wi-Fi Fingerprints in total</u> (not all were used in the dataset because a limited the points).
+This was by far the most ambitious project I ever did by myself. The amount of search I did in areas that I had never seen before was huge. But looking back was worthy because it was the first time I experienced some problems like the need for a data pipeline. I was working with 3 Raspberry boards saving data collected as JSON. I needed to merge all this data and convert it into a tabular format to train my machine learning models. Only the site-survey process took a very long time, but <u>I was able to collect 258.369 Wi-Fi Fingerprints in total</u> (not all were used in the dataset because I limited the classrooms).
 
 The project was an academic success although it had flaws like I wasn't able to separate the college access points apart from other wireless devices from people at college passing by (I realized after that there were ways of doing that). The algorithm responsible for guiding the user could be improved a lot.
 
