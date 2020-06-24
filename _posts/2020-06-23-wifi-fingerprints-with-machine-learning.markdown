@@ -57,7 +57,7 @@ I needed lots of data in order to create good models. <u>The process of gatherin
 
 <img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/collect-data-process.png' | relative_url}}" alt="collect-data-process.png">
 
-The idea was to collect Wi-Fi Fingerprints for each point (where each point was a classroom at my college). To do this, I used three Raspberry boards with a custom Wi-Fingerprint collector CLI tool developed by me and a MongoDB to store all fingerprints. Was a long process, collect all Wi-Fi Fingerprints for the points we needed (thousands of fingerprints for each point). After each collect process I exported the data from MongoDB as JSON and recovered from the boards via scp. The image above illustrates how this process worked.
+The idea was to collect Wi-Fi Fingerprints for each point (where each point was a classroom at my college). To do this, I used three Raspberry boards with a custom Wi-Fingerprint collector CLI tool developed by me and a MongoDB to store all fingerprints. It was a long process, collect all Wi-Fi Fingerprints for the points we needed (thousands of fingerprints for each point). After each collect process, I exported the data from MongoDB as JSON and recovered from the boards via scp. The image above illustrates how this process worked.
 
 <h4>How does a Wi-Fi Fingerprint looks like?</h4>
 
@@ -136,7 +136,7 @@ The image above is a photo of the college map. This photo shows all classrooms (
 
 <img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/graphs.png' | relative_url}}" alt="graphs.png">
 
-Graphs are a way to structure our data, here the important part is the relationship between our data. The image above is a graph representation of the classrooms I considered for my proof of concept. If we think about going from point A to point B, there is no way to reach the destination without pass by all points in between (unless you teleport yourself). This was kind of what I need needed to inform users about their next step towards their destination. The good part is that Graph theory it's something very established, there are a lot of algorithms developed to perform a search inside a graph no matter the size.
+Graphs are a way to structure our data, here the important part is the relationship between our data. The image above is a graph representation of the classrooms I considered for my proof of concept. If we think about going from point A to point B, there is no way to reach the destination without pass by all points in between (unless you teleport yourself). This was kind of what I needed to inform users about their next step towards their destination. The good part is that Graph theory it's something very established, there are a lot of algorithms developed to perform a search inside a graph no matter the size.
 
 <h3>How the navigation works</h3>
 
