@@ -15,7 +15,7 @@ The idea for my graduation thesis began when I noticed something, although my co
 
 When we think about this kind of navigation assistance we often think about GPS (Global Positioning System), but it turns out that <u>GPS is not good for indoor navigation</u>, satellites just can't offer this precision because the structure of the building often blocks the signal.
 
-<div style="content: '';clear: both;display: table;">
+<div style="content: '';clear: both;display: table; margin-left: auto; margin-right: auto;">
   <div style="float:left; width: 50%;">
     <img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/wireless.gif' | relative_url}}" alt="wireless.gif" style="width:100%">
   </div>
@@ -82,7 +82,7 @@ A Wi-Fi Fingerprint was a simple list of objects where each object represents a 
 
 <h4>The dataset</h4>
 
-<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/dataset.png' | relative_url}}" alt="dataset.png">
+<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/dataset.png' | relative_url}}" alt="dataset.png" style="margin-left: auto; margin-right: auto; width: 70%;">
 
 The image above shows the final result, and how much Wi-Fi Fingerprints I initially collected for each point. This dataset was used to train the machine learning models.
 
@@ -106,7 +106,7 @@ In Binary Classification we have two classes, a positive and a negative class. W
 
 <h4>Multiclass Classification</h4>
 
-<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/multiclass-classification.png' | relative_url}}" alt="multiclass-classification.png">
+<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/multiclass-classification.png' | relative_url}}" alt="multiclass-classification.png" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
 
 Binary Classification is excellent to determine if a Wi-Fi Fingerprint belongs to a point (class). But our real problem is that we have lots of different classrooms (also known as points and also known as classes) at the college. There are lots of ways to implement a Multiclass Classification but one famous way is using the "One vs. All" technique. In this method, a set of binary classifiers are created (one for each class) and the input data is executed through all those classifiers, the classification that responds with the best confidence is chosen as the right one.
 
@@ -116,7 +116,7 @@ A Multiclass Classification was exactly what I needed. Given input data (also kn
 
 <h4>Schematics</h4>
 
-<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/hardware-schematics.png' | relative_url}}" alt="hardware-schematics.png">
+<img src="{{'/assets/images/posts/2020-06-23-wifi-fingerprints-with-machine-learning/hardware-schematics.png' | relative_url}}" alt="hardware-schematics.png" style="margin-left: auto; margin-right: auto; width: 40%;">
 
 From the schematics drawings above a 3D version was made an then I used a 3D printer.
 
