@@ -68,7 +68,7 @@ After a refactor on the way our aplication was querying data, <u>it never ran ou
 
 The image above shows the result of our little implementation comparing response time for extractions of the equivalent of one-day data. It's important to note that we have a difference in response times when we are writing results but not when we are only querying them. This difference is the result of another improvement, this time on the process of writing data to a file.
 
-<h5>Writing file with Node.JS WriteStream</h5>
+<h5>Writing files with Node.JS WriteStream</h5>
 
 Our original application was writing data to files synchronously. We already know that this process slows down our application a lot, because we were keeping I/O processes on our event loop. There is more, even if we were already writing lines to our CSV file asynchronously, we could still improve the process with Node.JS <a href="https://nodejs.org/api/fs.html#fs_class_fs_writestream">WriteStream</a>. The Node.JS WriteStream creates a stream that writes data to a file, using this approach we are able to enqueue data to the stream, and this data is then writed to the file asynchronously. That way we again doesn't need to keep holding all file's lines in memory, we could send them to be writed as soon as we generate them.
 
@@ -112,8 +112,8 @@ This was the last tunning I did in my project and it actually helped a lot. It's
 
 <img src="{{'/assets/images/posts/2021-01-11-optimizing-io-with-nodejs-streams/Response time over the tests.png' | relative_url}}" alt="Response time over the tests.png">
 
-The image above contains the final comparison of the query results for 30 days. The response decreases in chronological order too. When doing optimizations, we often don't find the better approach at first, we work on every little implementation, every second count at the end.
+The image above contains the final comparison of the query results using 1 and 30 days queries. I wanted to test with a bigger result set, but the original version could not handle it, so for the original version, I compared just one day with a custom version using one MongoDB cursor and file streams querying also 1-day data. The response decreases in chronological order too. When doing optimizations, we often don't find the better approach at first, we work on every little implementation, every second count at the end. I'm proud that the optimizations resulted in a processing time for 30 days of conversation data of 1,79 minutes, 2.17 minutes less than the first version using a single MongoDB cursor and file streams.
 
-It's pretty normal when learning Node.JS to think that async code is terrible or complicated. In fact, there are a lot of developers who are always making their code as sync as possible when it didn't need to be. To understand Node.JS async concept it's what will make your code more reliable and faster. Curiously, this was not the objective of this project I worked on, it was just my excuse to challenge myself. The idea of this post was to explore and share some concepts that I thought some could not be familiar with.
+It's pretty normal when learning Node.JS to think that async code is terrible or complicated. In fact, there are a lot of developers who are always making their code as sync as possible when it didn't need to be. To understand the Node.JS async concept it's what will make your code more reliable and faster. Curiously, this was not the objective of this project I worked on, it was just my excuse to challenge myself. The idea of this post was to explore and share some concepts that I thought some could not be familiar with.
 
 Hope you enjoy ;)
