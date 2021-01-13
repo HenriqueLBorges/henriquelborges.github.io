@@ -86,9 +86,7 @@ It was not the case here but when we're dealing with MongoDB, it's important to 
 
 <img src="{{'/assets/images/posts/2021-01-11-optimizing-io-with-nodejs-streams/application1.png' | relative_url}}" alt="application1.png">
 
-Most of what our code is doing is waiting for the MongoDB cursor to return more data. This process is limited by network latency. So the idea of this step is to split the data into multiple cursors, every cursor has its own I/O process running in parallel. So in the first cursor, our application could be processing something, on the second our application is waiting for more data and in the third one, the data just arrived. 
-
-<img src="{{'/assets/images/posts/2021-01-11-optimizing-io-with-nodejs-streams/application1.png' | relative_url}}" alt="application1.png">
+Most of what our code is doing is waiting for the MongoDB cursor to return more data. This process is limited by network latency. So the idea of this step is to split the data into multiple cursors, every cursor has its own I/O process running in parallel. So in the first cursor, our application could be processing something, on the second our application is waiting for more data and in the third one, the data just arrived.
 
 Now we're getting more data at the same time. Although it is important to keep in my mind that a sweet spot actually exists, a lot of cursors querying at the same time could be prejudical for the database itself. Task partitioning save us almost 10 seconds of execution time. The image above compares two test querying the same data with a different number of MongoDB cursors between them.
 
