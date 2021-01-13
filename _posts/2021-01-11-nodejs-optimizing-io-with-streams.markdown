@@ -25,7 +25,7 @@ What my old boss was used to were web servers spawning threads in order to proce
 
 When my old boss talked about Node.JS being single thread he was actually talking about the event loop. Node.js is a runtime environment for Javascript, and the event loop is part of the Javascript model. The event loop is responsible for processing items from the call stack, those items are everything happening synchronously on our code, like for loops. One of the things the Node.js adds to Javascript is the <a href="https://github.com/libuv/libuv">libuv</a>, libuv is a C library for asynchronous I/O. <u>Libuv receives tasks from Node.JS applications and processes them in threads apart from event loop (main thread)</u>. After completition, the results are returned via their callbacks. These callbacks are enqueued in a task queue and processed by the event loop.
 
-You might wonder what exactly is better about this approach. Node.JS applications don't keep a thread per connection or per request, threads only process I/O tasks, it doesn't matter if all threads came from one user or from 100 users. If you have to start 3 I/O processes simultaneously, Node.JS parallelize this for you automatically when you keep the code asynchronous.
+You might wonder what exactly is better about this approach. Node.JS applications don't keep a thread per connection or per request, threads only process I/O tasks, it doesn't matter if all tasks came from one user or from 100 users. If you have to start 3 I/O processes simultaneously, Node.JS parallelize this for you automatically when you keep the code asynchronous.
 
 <h3>A Node.JS I/O intensive application</h3>
 
@@ -88,7 +88,7 @@ It was not the case here but when we're dealing with MongoDB, it's important to 
 
 Most of what our code is doing is waiting for the MongoDB cursor to return more data. This process is limited by network latency. So the idea of this step is to split the data into multiple cursors, every cursor has its own I/O process running in parallel. So in the first cursor, our application could be processing something, on the second our application is waiting for more data and in the third one, the data just arrived.
 
-Now we're getting more data at the same time. Although it is important to keep in my mind that a sweet spot actually exists, a lot of cursors querying at the same time could be prejudical for the database itself. Task partitioning save us almost 10 seconds of execution time. The image above compares two test querying the same data with a different number of MongoDB cursors between them.
+Now we're getting more data at the same time. Although it is important to keep in mind that a sweet spot actually exists. A lot of cursors querying at the same time could be prejudical for the database itself. Task partitioning save us almost 10 seconds of execution time. The image above compares two test querying the same data with a different number of MongoDB cursors between them.
 
 <h5>The Libuv threads number</h5>
 
